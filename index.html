@@ -1,0 +1,154 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flight Booking Malaysia</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f4f8;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .container {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      width: 350px;
+    }
+    .logo {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .logo img {
+      max-width: 120px;
+      height: auto;
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    input, select, button {
+      width: 100%;
+      margin-bottom: 15px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    .details {
+      margin-top: 20px;
+      background-color: #e8f0fe;
+      padding: 10px;
+      border-radius: 5px;
+      display: none;
+    }
+    @media print {
+      form, button:not(.print-button) {
+        display: none;
+      }
+      .details {
+        display: block !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="logo">
+      <!-- Replace with your actual logo URL -->
+      <img src="myterbang-logo.jpeg" alt="MyTerbang Logo">
+    </div><form id="bookingForm" onsubmit="handleBooking(event)">
+  <h2>Book a Flight</h2>
+  <input type="text" id="name" placeholder="Full Name" required>
+  <input type="email" id="email" placeholder="Email Address" required>
+  <input type="tel" id="phone" placeholder="Phone Number" required>
+
+  <label for="from">From:</label>
+  <select id="from" required>
+    <option value="KUL">Kuala Lumpur International Airport (KUL)</option>
+    <option value="PEN">Penang International Airport (PEN)</option>
+    <option value="BKI">Kota Kinabalu International Airport (BKI)</option>
+  </select>
+
+  <label for="to">To:</label>
+  <select id="to" required>
+    <option value="LGK">Langkawi International Airport (LGK)</option>
+    <option value="KCH">Kuching International Airport (KCH)</option>
+    <option value="JHB">Senai International Airport (JHB)</option>
+  </select>
+
+  <label for="date">Travel Date:</label>
+  <input type="date" id="date" required>
+
+  <label for="class">Flight Class:</label>
+  <select id="class" required>
+    <option value="economy">Economy</option>
+    <option value="business">Business</option>
+    <option value="first">First Class</option>
+  </select>
+
+  <button type="submit">Book Flight</button>
+</form>
+
+<div class="details" id="bookingDetails"></div>
+
+  </div>  <script>
+    function getRandomTime() {
+      const hours = Math.floor(Math.random() * 12) + 6; // From 6 AM to 6 PM
+      const minutes = Math.floor(Math.random() / 2 * 60); // 0 or 30
+      return ${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')};
+    }
+
+    function getRandomSeat() {
+      const row = Math.floor(Math.random() * 30) + 1;
+      const seat = String.fromCharCode(65 + Math.floor(Math.random() * 6)); // A-F
+      return ${row}${seat};
+    }
+
+    function handleBooking(event) {
+      event.preventDefault();
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const phone = document.getElementById('phone').value;
+      const from = document.getElementById('from').value;
+      const to = document.getElementById('to').value;
+      const date = document.getElementById('date').value;
+      const flightClass = document.getElementById('class').value;
+      const flightTime = getRandomTime();
+      const seatNumber = getRandomSeat();
+
+      const detailsDiv = document.getElementById('bookingDetails');
+      detailsDiv.style.display = 'block';
+      detailsDiv.innerHTML = `
+        <div class="logo">
+          <img src="myterbang-logo.jpeg" alt="MyTerbang Logo">
+        </div>
+        <h3>Booking Confirmation</h3>
+        <p><strong>Name:</strong> ${name}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Phone:</strong> ${phone}</p>
+        <p><strong>From:</strong> ${from}</p>
+        <p><strong>To:</strong> ${to}</p>
+        <p><strong>Date:</strong> ${date}</p>
+        <p><strong>Departure Time:</strong> ${flightTime}</p>
+        <p><strong>Class:</strong> ${flightClass}</p>
+        <p><strong>Seat Number:</strong> ${seatNumber}</p>
+        <button class="print-button" onclick="window.print()">Print Booking</button>
+      `;
+
+      document.getElementById('bookingForm').reset();
+    }
+  </script></body>
+</html>
