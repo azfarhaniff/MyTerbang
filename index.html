@@ -112,7 +112,7 @@
     function getRandomTime() {
       const hour = Math.floor(Math.random() * 12) + 6;
       const minute = Math.random() > 0.5 ? '00' : '30';
-      return ${String(hour).padStart(2, '0')}:${minute};
+      return `${String(hour).padStart(2, '0')}:${minute}`;
     }
 
     function getRandomSeat() {
