@@ -1,4 +1,5 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -65,43 +66,48 @@
   <div class="container">
     <div class="logo">
       <img src="myterbang-logo.png" alt="MyTerbang Logo" />
-    </div><form id="bookingForm">
-  <h2>Book Your Flight</h2>
-  <input type="text" id="name" placeholder="Full Name" required />
-  <input type="email" id="email" placeholder="Email Address" required />
-  <input type="tel" id="phone" placeholder="Phone Number" required />
+    </div>
 
-  <label for="from">From:</label>
-  <select id="from" required>
-    <option value="KUL">Kuala Lumpur (KUL)</option>
-    <option value="PEN">Penang (PEN)</option>
-    <option value="BKI">Kota Kinabalu (BKI)</option>
-  </select>
+    <form id="bookingForm">
+      <h2>Book Your Flight</h2>
+      <input type="text" id="name" placeholder="Full Name" required />
+      <input type="email" id="email" placeholder="Email Address" required />
+      <input type="tel" id="phone" placeholder="Phone Number" required />
 
-  <label for="to">To:</label>
-  <select id="to" required>
-    <option value="LGK">Langkawi (LGK)</option>
-    <option value="KCH">Kuching (KCH)</option>
-    <option value="JHB">Senai (JHB)</option>
-  </select>
+      <label for="from">From:</label>
+      <select id="from" required>
+        <option value="KUL">Kuala Lumpur (KUL)</option>
+        <option value="PEN">Penang (PEN)</option>
+        <option value="BKI">Kota Kinabalu (BKI)</option>
+      </select>
 
-  <label for="date">Travel Date:</label>
-  <input type="date" id="date" required />
+      <label for="to">To:</label>
+      <select id="to" required>
+        <option value="LGK">Langkawi (LGK)</option>
+        <option value="KCH">Kuching (KCH)</option>
+        <option value="JHB">Senai (JHB)</option>
+      </select>
 
-  <label for="class">Class:</label>
-  <select id="class" required>
-    <option value="Economy">Economy</option>
-    <option value="Business">Business</option>
-    <option value="First">First Class</option>
-  </select>
+      <label for="date">Travel Date:</label>
+      <input type="date" id="date" required />
 
-  <button type="submit">Book Flight</button>
-</form>
+      <label for="class">Class:</label>
+      <select id="class" required>
+        <option value="Economy">Economy</option>
+        <option value="Business">Business</option>
+        <option value="First">First Class</option>
+      </select>
 
-<div class="details" id="bookingDetails"></div>
+      <button type="submit">Book Flight</button>
+    </form>
 
-  </div>  <script>
-    document.getElementById('bookingForm').addEventListener('submit', handleBooking);
+    <div class="details" id="bookingDetails"></div>
+  </div>
+
+  <script>
+    window.onload = function () {
+      document.getElementById('bookingForm').addEventListener('submit', handleBooking);
+    };
 
     function getRandomTime() {
       const hour = Math.floor(Math.random() * 12) + 6;
@@ -151,5 +157,6 @@
 
       document.getElementById('bookingForm').reset();
     }
-  </script></body>
+  </script>
+</body>
 </html>
