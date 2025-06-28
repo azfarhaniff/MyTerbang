@@ -98,7 +98,7 @@
     @media print {
       form,
       button:not(.print-button),
-      .logo:first-of-type {
+      .form-logo {
         display: none;
       }
       .details {
@@ -109,7 +109,7 @@
 </head>
 <body>
   <div class="container">
-    <div class="logo">
+    <div class="logo form-logo">
       <img src="myterbang-logo.png" alt="MyTerbang Logo" />
     </div><form id="bookingForm">
   <h2>Book Your Flight</h2>
@@ -182,7 +182,7 @@
       const seat = getRandomSeat();
 
       const output = `
-        <div class="logo">
+        <div class="logo confirm-logo">
           <img src="myterbang-logo.png" alt="MyTerbang Logo" />
         </div>
         <h3>Booking Confirmation</h3>
