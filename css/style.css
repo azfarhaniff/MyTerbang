@@ -1,0 +1,67 @@
+body {
+  margin: 0;
+  font-family: "Georgia", serif;
+  background-color: #fff;
+  text-align: center;
+  color: #333;
+}
+
+/* Main invitation layout */
+.invitation {
+  min-height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url('../images/floral-border.png'); /* optional floral border */
+  background-size: cover;
+  background-position: center;
+}
+
+.border {
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 40px 20px;
+  border-radius: 20px;
+}
+
+h3 {
+  letter-spacing: 2px;
+  font-weight: normal;
+  color: #555;
+}
+
+h1 {
+  font-family: "Playfair Display", serif;
+  color: #c6a300;
+  font-size: 40px;
+  margin: 10px 0;
+  line-height: 1.4em;
+}
+
+.date {
+  margin-top: 15px;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Bottom navigation */
+.navbar {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: #222;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px 0;
+}
+
+.navbar a {
+  color: white;
+  text-decoration: none;
+  font-size: 13px;
+}
+
+.navbar i {
+  font-size: 18px;
+  margin-bottom: 3px;
+}
