@@ -1,26 +1,29 @@
 body {
   margin: 0;
   font-family: "Georgia", serif;
-  background-color: #fff;
-  text-align: center;
   color: #333;
+  text-align: center;
+
+  /* Background image setup */
+  background-image: url('bg.jpg');
+  background-size: cover;           /* Make sure it fills the screen */
+  background-position: center;      /* Center the focus */
+  background-repeat: no-repeat;
+  background-attachment: fixed;     /* Optional: gives a parallax-like effect */
+  transform: scale(1.05);           /* Slight zoom for screen variations */
+  transform-origin: center center;  /* Zoom centered */
 }
 
-/* Main invitation layout */
+/* Slight overlay for readability */
 .invitation {
   min-height: 90vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-image: url('../images/floral-border.png'); /* optional floral border */
-  background-size: cover;
-  background-position: center;
-}
-
-.border {
-  background-color: rgba(255, 255, 255, 0.8);
-  padding: 40px 20px;
-  border-radius: 20px;
+  flex-direction: column;
+  background-color: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(2px);
+  padding: 20px;
 }
 
 h3 {
@@ -32,27 +35,28 @@ h3 {
 h1 {
   font-family: "Playfair Display", serif;
   color: #c6a300;
-  font-size: 40px;
+  font-size: 42px;
   margin: 10px 0;
   line-height: 1.4em;
 }
 
 .date {
-  margin-top: 15px;
+  margin-top: 10px;
   font-weight: bold;
   color: #333;
 }
 
-/* Bottom navigation */
+/* Bottom navigation bar */
 .navbar {
   position: fixed;
   bottom: 0;
   width: 100%;
-  background: #222;
+  background: rgba(34, 34, 34, 0.95);
   display: flex;
   justify-content: space-around;
   align-items: center;
   padding: 10px 0;
+  backdrop-filter: blur(5px);
 }
 
 .navbar a {
@@ -64,4 +68,11 @@ h1 {
 .navbar i {
   font-size: 18px;
   margin-bottom: 3px;
+}
+
+/* Responsive tweaks */
+@media (max-width: 600px) {
+  h1 {
+    font-size: 34px;
+  }
 }
