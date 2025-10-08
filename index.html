@@ -1,208 +1,34 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MyTerbang Flight Booking</title>
-  <style>
-    :root {
-      --primary-color: #007bff;
-      --secondary-color: #f0f4f8;
-      --accent-color: #e8f0fe;
-      --border-radius: 12px;
-    }
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: var(--secondary-color);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      margin: 0;
-      padding: 20px;
-    }
-    .container {
-      background: white;
-      padding: 30px 25px;
-      border-radius: var(--border-radius);
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-      max-width: 460px;
-      width: 100%;
-      transition: all 0.3s ease;
-    }
-    .logo {
-      text-align: center;
-      margin-bottom: 25px;
-    }
-    .logo img {
-      max-width: 160px;
-      height: auto;
-    }
-    h2, h3 {
-      text-align: center;
-      color: var(--primary-color);
-      margin-bottom: 20px;
-    }
-    label {
-      font-weight: bold;
-      display: block;
-      margin-bottom: 5px;
-      color: #333;
-    }
-    input, select {
-      width: 100%;
-      margin-bottom: 20px;
-      padding: 12px;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      font-size: 15px;
-      box-sizing: border-box;
-    }
-    button {
-      width: 100%;
-      padding: 12px;
-      background-color: var(--primary-color);
-      color: white;
-      border: none;
-      border-radius: 8px;
-      font-size: 16px;
-      cursor: pointer;
-      transition: background-color 0.3s;
-    }
-    button:hover {
-      background-color: #0056b3;
-    }
-    .details {
-      margin-top: 25px;
-      background: var(--accent-color);
-      padding: 20px;
-      border-radius: var(--border-radius);
-      display: none;
-      animation: fadeIn 0.3s ease-in-out;
-    }
-    .details p {
-      margin: 8px 0;
-      line-height: 1.5;
-      color: #333;
-    }
-    .print-button {
-      margin-top: 20px;
-      background-color: #28a745;
-    }
-    .print-button:hover {
-      background-color: #1e7e34;
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    @media print {
-      form,
-      button:not(.print-button),
-      .form-logo {
-        display: none;
-      }
-      .details {
-        display: block !important;
-      }
-    }
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Azfar & Najihah | Wedding Invitation</title>
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-  <div class="container">
-    <div class="logo form-logo">
-      <img src="myterbang-logo.png" alt="MyTerbang Logo" />
-    </div><form id="bookingForm">
-  <h2>Book Your Flight</h2>
-  <label for="name">Full Name</label>
-  <input type="text" id="name" placeholder="e.g. Dania Nazifa" required />
 
-  <label for="email">Email Address</label>
-  <input type="email" id="email" placeholder="e.g. dania@example.com" required />
+  <!-- Main content -->
+  <div class="invitation">
+    <div class="border">
+      <h3>RAIKAN CINTA</h3>
+      <h1>Azfar<br>&<br>Najihah</h1>
+      <p class="date">5.3.2026 (hari?)</p>
+    </div>
+  </div>
 
-  <label for="phone">Phone Number</label>
-  <input type="tel" id="phone" placeholder="e.g. 012-3456789" required />
+  <!-- Bottom navigation -->
+  <div class="navbar">
+    <a href="contact.html"><i class="fa fa-phone"></i><br>Contact</a>
+    <a href="maps.html"><i class="fa fa-map-marker-alt"></i><br>Maps</a>
+    <a href="wish.html"><i class="fa fa-comment"></i><br>Wish</a>
+    <a href="gallery.html"><i class="fa fa-image"></i><br>Gallery</a>
+    <a href="calendar.html"><i class="fa fa-calendar"></i><br>Calendar</a>
+  </div>
 
-  <label for="from">From</label>
-  <select id="from" required>
-    <option value="KLIA2">Kuala Lumpur (KLIA2)</option>
-    <option value="PEN">Penang (PEN)</option>
-    <option value="BKI">Kota Kinabalu (BKI)</option>
-  </select>
-
-  <label for="to">To</label>
-  <select id="to" required>
-    <option value="LGK">Langkawi (LGK)</option>
-    <option value="KCH">Kuching (KCH)</option>
-    <option value="JHB">Senai (JHB)</option>
-  </select>
-
-  <label for="date">Travel Date</label>
-  <input type="date" id="date" required />
-
-  <label for="class">Class</label>
-  <select id="class" required>
-    <option value="Economy">Economy</option>
-    <option value="Business">Business</option>
-    <option value="First">First Class</option>
-  </select>
-
-  <button type="submit">Book Flight</button>
-</form>
-
-<div class="details" id="bookingDetails"></div>
-
-  </div>  <script>
-    window.onload = function () {
-      document.getElementById('bookingForm').addEventListener('submit', handleBooking);
-    };
-
-    function getRandomTime() {
-      const hour = Math.floor(Math.random() * 12) + 6;
-      const minute = Math.random() > 0.5 ? '00' : '30';
-      return `${String(hour).padStart(2, '0')}:${minute}`;
-    }
-
-    function getRandomSeat() {
-      const row = Math.floor(Math.random() * 30) + 1;
-      const seat = String.fromCharCode(65 + Math.floor(Math.random() * 6));
-      return `${row}${seat}`;
-    }
-
-    function handleBooking(event) {
-      event.preventDefault();
-
-      const name = document.getElementById('name').value;
-      const email = document.getElementById('email').value;
-      const phone = document.getElementById('phone').value;
-      const from = document.getElementById('from').value;
-      const to = document.getElementById('to').value;
-      const date = document.getElementById('date').value;
-      const flightClass = document.getElementById('class').value;
-      const time = getRandomTime();
-      const seat = getRandomSeat();
-
-      const output = `
-        <div class="logo confirm-logo">
-          <img src="myterbang-logo.png" alt="MyTerbang Logo" />
-        </div>
-        <h3>Booking Confirmation</h3>
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Phone:</strong> ${phone}</p>
-        <p><strong>From:</strong> ${from}</p>
-        <p><strong>To:</strong> ${to}</p>
-        <p><strong>Date:</strong> ${date}</p>
-        <p><strong>Time:</strong> ${time}</p>
-        <p><strong>Class:</strong> ${flightClass}</p>
-        <p><strong>Seat:</strong> ${seat}</p>
-        <button class="print-button" onclick="window.print()">Print Booking</button>
-      `;
-
-      const details = document.getElementById('bookingDetails');
-      details.innerHTML = output;
-      details.style.display = 'block';
-
-      document.getElementById('bookingForm').reset();
-    }
-  </script></body>
+</body>
 </html>
