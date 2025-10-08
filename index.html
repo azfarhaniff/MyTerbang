@@ -8,10 +8,10 @@
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
-  <!-- Falling Stars -->
+  <!-- Falling Stars (background) -->
   <canvas id="stars"></canvas>
 
-  <!-- Main Invitation Section -->
+  <!-- Main Invitation -->
   <div class="invitation">
     <h2>RAIKAN CINTA</h2>
     <h1>Azfar<br>&<br>Najihah</h1>
@@ -40,29 +40,36 @@
     resize();
 
     const colors = [
-      "rgba(255, 223, 100, 0.9)", // soft gold
-      "rgba(255, 180, 200, 0.9)", // soft pink
-      "rgba(255, 255, 230, 0.9)"  // white-yellowish
+      "255, 223, 100", // soft gold
+      "255, 180, 200", // soft pink
+      "255, 255, 230"  // white-yellow
     ];
 
+    // Create stars with random twinkle parameters
     for (let i = 0; i < 130; i++) {
+      const color = colors[Math.floor(Math.random() * colors.length)];
       stars.push({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
-        r: Math.random() * 2.2,
+        r: Math.random() * 2.2 + 0.5,
         d: Math.random() * 0.4 + 0.2,
-        color: colors[Math.floor(Math.random() * colors.length)]
+        baseAlpha: Math.random() * 0.6 + 0.3,
+        twinkleSpeed: Math.random() * 0.02 + 0.005,
+        phase: Math.random() * Math.PI * 2,
+        color: color
       });
     }
 
     function draw() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       for (let s of stars) {
+        // calculate current alpha for twinkle
+        const alpha = s.baseAlpha + Math.sin(s.phase) * 0.3;
         ctx.beginPath();
-        ctx.fillStyle = s.color;
+        ctx.fillStyle = `rgba(${s.color}, ${alpha})`;
         ctx.shadowBlur = 8;
-        ctx.shadowColor = s.color;
-        ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2, true);
+        ctx.shadowColor = `rgba(${s.color}, ${alpha})`;
+        ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
         ctx.fill();
       }
       update();
@@ -71,6 +78,7 @@
     function update() {
       for (let s of stars) {
         s.y += s.d;
+        s.phase += s.twinkleSpeed;
         if (s.y > canvas.height) {
           s.y = 0;
           s.x = Math.random() * canvas.width;
