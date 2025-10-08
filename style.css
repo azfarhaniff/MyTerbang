@@ -1,37 +1,36 @@
 body {
   margin: 0;
   font-family: "Georgia", serif;
-  color: #333;
   text-align: center;
+  color: #333;
+  min-height: 100vh;
 
-  /* Background image setup */
+  /* Background image */
   background-image: url('bg.jpg');
-  background-size: cover;           /* Make sure it fills the screen */
-  background-position: center;      /* Center the focus */
+  background-size: cover;
+  background-position: center center;
   background-repeat: no-repeat;
-  background-attachment: fixed;     /* Optional: gives a parallax-like effect */
-  transform: scale(1.05);           /* Slight zoom for screen variations */
-  transform-origin: center center;  /* Zoom centered */
+  background-attachment: scroll; /* changed from fixed to prevent clipping */
 }
 
-/* Slight overlay for readability */
+/* Overlay for readability */
 .invitation {
-  min-height: 90vh;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   background-color: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(2px);
-  padding: 20px;
+  box-sizing: border-box;
+  padding-bottom: 70px; /* give space so text not hidden by navbar */
 }
 
+/* Typography */
 h3 {
   letter-spacing: 2px;
   font-weight: normal;
   color: #555;
 }
-
 h1 {
   font-family: "Playfair Display", serif;
   color: #c6a300;
@@ -39,40 +38,36 @@ h1 {
   margin: 10px 0;
   line-height: 1.4em;
 }
-
 .date {
   margin-top: 10px;
   font-weight: bold;
   color: #333;
 }
 
-/* Bottom navigation bar */
+/* Navbar */
 .navbar {
   position: fixed;
   bottom: 0;
   width: 100%;
-  background: rgba(34, 34, 34, 0.95);
+  background: rgba(34, 34, 34, 0.95); /* slight transparency */
   display: flex;
   justify-content: space-around;
   align-items: center;
-  padding: 10px 0;
-  backdrop-filter: blur(5px);
+  padding: 8px 0;
+  backdrop-filter: blur(5px); /* modern glassy look */
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .navbar a {
   color: white;
   text-decoration: none;
   font-size: 13px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .navbar i {
   font-size: 18px;
   margin-bottom: 3px;
-}
-
-/* Responsive tweaks */
-@media (max-width: 600px) {
-  h1 {
-    font-size: 34px;
-  }
 }
