@@ -1,84 +1,90 @@
-body {
+/* General layout */
+html, body {
   margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden; /* Prevent scrolling */
+}
+
+body {
   font-family: "Georgia", serif;
   text-align: center;
   color: #333;
-  min-height: 100vh;
-
-  /* Background image */
   background-image: url('bg.jpg');
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
-  background-attachment: scroll; /* changed from fixed to prevent clipping */
+  position: relative;
 }
 
-/* Overlay for readability */
-.invitation {
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  background-color: rgba(255, 255, 255, 0.7);
-  box-sizing: border-box;
-  padding-bottom: 70px; /* give space so text not hidden by navbar */
-}
-
-/* Typography */
-h3 {
-  letter-spacing: 2px;
-  font-weight: normal;
-  color: #555;
-}
-h1 {
-  font-family: "Playfair Display", serif;
-  color: #c6a300;
-  font-size: 42px;
-  margin: 10px 0;
-  line-height: 1.4em;
-}
-.date {
-  margin-top: 10px;
-  font-weight: bold;
-  color: #333;
-}
-
-/* Navbar */
-.navbar {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  background: rgba(34, 34, 34, 0.95); /* slight transparency */
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  padding: 8px 0;
-  backdrop-filter: blur(5px); /* modern glassy look */
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.navbar a {
-  color: white;
-  text-decoration: none;
-  font-size: 13px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.navbar i {
-  font-size: 18px;
-  margin-bottom: 3px;
-}
-
-/* Starry glitter overlay */
+/* Falling star overlay */
 #stars {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none; /* allow tapping links under it */
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Invitation text block */
+.invitation {
+  position: relative;
   z-index: 2;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+.invitation h2 {
+  font-size: 1.2em;
+  letter-spacing: 2px;
+  color: #444;
+  margin-bottom: 10px;
+}
+
+.invitation h1 {
+  font-size: 2.5em;
+  line-height: 1.2;
+  color: #c59d00;
+  margin: 0;
+}
+
+.invitation p {
+  margin-top: 10px;
+  font-size: 1.1em;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Bottom nav bar */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: space-around;
+  padding: 8px 0;
+  z-index: 3;
+}
+
+.bottom-nav a {
+  color: white;
+  text-decoration: none;
+  font-size: 0.8em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.bottom-nav i {
+  font-size: 1.2em;
+  margin-bottom: 2px;
 }
